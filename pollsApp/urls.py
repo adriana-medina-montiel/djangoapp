@@ -16,8 +16,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.http import HttpResponse
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('polls/', include('polls.urls'))
+    path('polls/', include('polls.urls')),
+    path('', lambda request : HttpResponse("""
+<ul>
+ <li><a href = "/admin/"> Admin</a></ul>                                          
+ <li><a href = "/polls/"> Polls</a></ul>                                          
+                                    
+
+"""))
 ]
